@@ -1,7 +1,7 @@
 html, body{
   height: 100%;
 }
-#main{
+#weather-main{
   padding: 1em;
   background: no-repeat center url('../img/tadej-skofic-571573-unsplash.jpg');
   background-size: cover;   
