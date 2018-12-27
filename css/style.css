@@ -1,7 +1,11 @@
+html, body{
+  height: 100%;
+}
 #main{
   padding: 1em;
   background: no-repeat center url('../img/tadej-skofic-571573-unsplash.jpg');
   background-size: cover;   
+  height: 100%;
   /*background-color: grey;*/
 }
 
