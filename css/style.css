@@ -14,3 +14,23 @@ html, body{
   background-color:white;
 }
 
+* { 
+  box-sizing: border-box;
+}/*Makes it easier to size elements since the borders are included in the sizing, instead of added on*/
+
+#wikiBody{
+  font-family: 'Montserrat', sans-serif;
+  background-image:url('https://upload.wikimedia.org/wikipedia/en/thumb/8/80/Wikipedia-logo-v2.svg/1122px-Wikipedia-logo-v2.svg.png');
+  background-repeat:no-repeat;
+
+}
+
+button, .btn{
+  margin-top:1em;
+  margin-bottom:1em;
+}
+
+#resultsList{
+  background-color: rgba(209, 209, 209, 0.8);  /* 50% transparent */
+  
+}
