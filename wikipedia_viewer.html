@@ -3,11 +3,9 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Wikipedia Viewer</title>
+    <title>Wikipedia Search</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ"
         crossorigin="anonymous">
-
-
 
     <link rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css'>
     <link rel="stylesheet" href="css/style.css">
@@ -15,7 +13,7 @@
 
 </head>
 
-<body id="wikiBody">
+<body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <a class="navbar-brand" href="#">Lazer Porter | Full Stack Dev</a>
@@ -34,33 +32,30 @@
             </div>
         </nav>
     </header>
-    <div class="container">
-        <h1>Wikipedia Search</h1>
-        <h5><a href="https://www.freecodecamp.org" target="blank">FreeCodeCamp.Org</a> Challenge</h5>
 
-        <input class="form-control" id="searchTerm">
 
-        <button id="searchButton" type="button" class="btn btn-primary"><span class="fa fa-search"></span> Search</button>
-        <a href="https://en.wikipedia.org/wiki/Special:Random" target="blank" class="btn btn-dark" role="button"><span
-                class="fas fa-random"></span> Random Article</a>
+    <div class="container-fluid" id="wikiBody">
+        <div class="jumbotron ">
+            <h1>Search Wikipedia</h1>
+            <input class="form-control" id="searchTerm">
+            <button id="searchButton" type="button" class="btn btn-primary"><span class="fa fa-search"></span>
+                Search</button>
+            <a href="https://en.wikipedia.org/wiki/Special:Random" target="blank" class="btn btn-dark" role="button"><span
+                    class="fas fa-random"></span> Random Article</a>
+            <div id="results">
+                <!--Containter for styling the results -->
+                <ul id="resultsList">
+                    <!--Containter for the parsed results to appear as <li> items -->
+                </ul>
+            </div>
 
-        <div id="results">
-            <!--Containter for styling the results -->
-            <ul id="resultsList">
-                <!--Containter for the parsed results to appear as <li> items -->
-            </ul>
         </div>
-
     </div>
 
     <!-- Make cards instead of li -->
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/fontawesome-iconpicker/3.0.0/js/fontawesome-iconpicker.js'></script>
     <script src="./js/wikipedia_viewer.js"></script>
-
-
-
-
 </body>
 
 </html>
