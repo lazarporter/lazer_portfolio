@@ -1,14 +1,29 @@
 const express = require('express')
 const path = require("path")
-const ejs = require('ejs')
+//const ejs = require('ejs')
+/*
 var mysql = require('mysql');
 
+var mysql      = require('mysql');
+var connection = mysql.createConnection({
+  host     : 'sql9.freemysqlhosting.net',
+  user     : 'sql9273064',
+  password : 'TzDasygDeh',
+  database : 'sql9273064'
+});
+ 
+connection.connect();
+ //table name is contactlist
+connection.query("SELECT * FROM contactlist;", function (error, results, fields) {
+  if (error) throw error;
+  console.log(`Query successful! Results: ${JSON.stringify(results)}`);
+});
 
-
+*/
 
 let app = express()
 var port = 8080
-app.set('view engine', 'ejs') //templating engine
+//app.set('view engine', 'ejs') //templating engine
 
 app.get('/weather', (req, res, next) => {
     res.sendFile(path.join(__dirname, "weather.html"))
