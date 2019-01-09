@@ -20,7 +20,7 @@ var queryString = "SELECT * FROM contactlist;"
 
 connection.connect();
 //Query the db to see get whatever is currently in there
-connection.query(queryString, function (error, results, fields) {
+connection.query({sql: queryString, timeout:60000}, function (error, results, fields) {
     if (error) throw error;
     contactList = results.slice()
 });
@@ -67,12 +67,12 @@ app.post('/sql-contact', (req, res, next) => {
     //console.log(queryString)
     
     //add the new person to the DB
-    connection.query(queryString, function (error, results, fields) {
+    connection.query({sql: queryString, timeout:60000}, function (error, results, fields) {
         if (error) throw error;
 
         //If successfull, query the table and get the updated list
         queryString = "SELECT * FROM contactlist;"
-        connection.query(queryString, function (error, results, fields) {
+        connection.query({sql: queryString, timeout:60000}, function (error, results, fields) {
             if (error) throw error;
             
             //save the updated list in memory
