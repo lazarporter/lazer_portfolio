@@ -1,5 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser');
+var morgan  = require('morgan')
+
 const path = require("path")
 var mysql = require('mysql');
 
@@ -31,6 +33,7 @@ var port = 8080
 app.use(bodyParser.urlencoded({
     extended: false
 }));
+app.use(morgan('dev'))
 app.set('view engine', 'ejs') //templating engine
 app.set('views', 'views') //where are the templates?
 
@@ -64,7 +67,7 @@ app.get('/sql-contact', (req, res, next) => {
 //POST route for adding data to the SQL databast
 app.post('/sql-contact', (req, res, next) => {
     queryString = "INSERT INTO contactlist VALUES (\"" + req.body.first_name + "\",\"" + req.body.last_name + "\",\"" + req.body.phone + "\");"
-    //console.log(queryString)
+    console.log(queryString)
     
     //add the new person to the DB
     connection.query({sql: queryString, timeout:60000}, function (error, results, fields) {
