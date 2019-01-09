@@ -29,7 +29,7 @@ connection.query({sql: queryString, timeout:60000}, function (error, results, fi
 //connection.end()
 
 let app = express()
-var port = 80
+var port = 8080
 app.use(bodyParser.urlencoded({
     extended: false
 }));
@@ -95,6 +95,8 @@ app.post('/sql-contact', (req, res, next) => {
 
 
 app.use(express.static(__dirname + '/'));
+console.log('process.env.PORT:');
+console.log(process.env.PORT);
 app.listen(port, function () {
     console.log("Running contact app on port " + port)
 
