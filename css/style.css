@@ -35,3 +35,8 @@ button, .btn{
   background-color: rgba(209, 209, 209, 0.8);  /* 50% transparent */
   
 }
+
+.logo{
+  height: 50px;
+  width: auto;
+}

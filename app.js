@@ -1,30 +1,28 @@
 const express = require('express')
 const bodyParser = require('body-parser');
-
 const path = require("path")
 var mysql = require('mysql');
-//const ejs = require('ejs')
+
 
 //grab the SQL table as soon as a user visits the site
-var connectParams = require(path.join(__dirname, 'config.js')).connectionInfo
-var connection = mysql.createConnection(connectParams);
 
 //will hold the contacts that come back from each SQL Query
 var contactList = []
 
-//Query the db for existing contacts
+//outsource the connection info to allow for keeping those details private (if config.js was .gitignored)
+var connectParams = require(path.join(__dirname, 'config.js')).connectionInfo
+var connection = mysql.createConnection(connectParams);
 connection.connect();
+
+
+//create the query string, table name is contactlist
 var queryString = "SELECT * FROM contactlist;"
-//table name is contactlist
+
+//Query the db to see get whatever is currently in there
 connection.query(queryString, function (error, results, fields) {
     if (error) throw error;
     contactList = results.slice()
-
-    // contactList.forEach((contact) => {
-    //     console.log(`Hi, my name is ${contact.first_name}`)
-    // })
 });
-
 
 
 let app = express()
@@ -33,40 +31,40 @@ app.use(bodyParser.urlencoded({
     extended: false
 }));
 app.set('view engine', 'ejs') //templating engine
-app.set('views', __dirname) //where are the templates?
+app.set('views', 'views') //where are the templates?
 
 
-// Defind the routes:
+//Routes:
 
 //home route
 app.get('/', (req, res, next) => {
-    res.sendFile(path.join(__dirname, "index.html"))
+    res.render('home')
 })
 
 //route for weather app
 app.get('/weather', (req, res, next) => {
-    res.sendFile(path.join(__dirname, "weather.html"))
+    res.render('weather')
 })
 
 //route for wikipedia search app
 app.get('/wikipedia_viewer', (req, res, next) => {
-    res.sendFile(path.join(__dirname, "wikipedia_viewer.html"))
+    res.render('wikipedia_viewer')
 })
 
 //GET route for the SQL based contact list
 app.get('/sql-contact', (req, res, next) => {
     res.render('contact', {
         contacts: contactList,
-        hasContacts: contactList.length > 0
+        hasContacts: contactList.length > 0        
     })
-    //res.write('<html><body><h1>This page is under construction.</h1></body></html>')    
+    //res.send('<html><body><h1>This page is under construction.</h1></body></html>')    
 })
 
 //POST route for adding data to the SQL databast
 app.post('/sql-contact', (req, res, next) => {
     queryString = "INSERT INTO contactlist VALUES (\"" + req.body.first_name + "\",\"" + req.body.last_name + "\",\"" + req.body.phone + "\");"
     console.log(queryString)
-
+    
     //add the new person to the DB
     connection.query(queryString, function (error, results, fields) {
         if (error) throw error;
@@ -82,7 +80,7 @@ app.post('/sql-contact', (req, res, next) => {
             // contactList.forEach((contact) => {
             //     console.log(`Hi, my name is ${contact.first_name}`)
             // })
-            res.redirect('/sql-contact');
+            res.status(200).redirect('/sql-contact');
         });
 
         
