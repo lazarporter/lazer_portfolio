@@ -29,7 +29,7 @@ connection.query({sql: queryString, timeout:60000}, function (error, results, fi
 //connection.end()
 
 let app = express()
-var port = 8080
+var port = 80
 app.use(bodyParser.urlencoded({
     extended: false
 }));
