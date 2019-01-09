@@ -12,18 +12,19 @@ var contactList = []
 //outsource the connection info to allow for keeping those details private (if config.js was .gitignored)
 var connectParams = require(path.join(__dirname, 'config.js')).connectionInfo
 var connection = mysql.createConnection(connectParams);
-connection.connect();
-
 
 //create the query string, table name is contactlist
+//var queryString = 'INSERT INTO contactlist VALUES ("Jack", "Cohen", "1112223344");'
 var queryString = "SELECT * FROM contactlist;"
 
+
+connection.connect();
 //Query the db to see get whatever is currently in there
 connection.query(queryString, function (error, results, fields) {
     if (error) throw error;
     contactList = results.slice()
 });
-
+//connection.end()
 
 let app = express()
 var port = 8080
@@ -63,7 +64,7 @@ app.get('/sql-contact', (req, res, next) => {
 //POST route for adding data to the SQL databast
 app.post('/sql-contact', (req, res, next) => {
     queryString = "INSERT INTO contactlist VALUES (\"" + req.body.first_name + "\",\"" + req.body.last_name + "\",\"" + req.body.phone + "\");"
-    console.log(queryString)
+    //console.log(queryString)
     
     //add the new person to the DB
     connection.query(queryString, function (error, results, fields) {
@@ -82,7 +83,6 @@ app.post('/sql-contact', (req, res, next) => {
             // })
             res.status(200).redirect('/sql-contact');
         });
-
         
     });
 
