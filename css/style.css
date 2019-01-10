@@ -39,6 +39,8 @@ button, .btn{
 .logo{
   height: 50px;
   width: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .icon{
