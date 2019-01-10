@@ -1,7 +1,7 @@
 const express = require('express')
+var favicon = require('serve-favicon')
 const bodyParser = require('body-parser');
 var morgan  = require('morgan')
-
 const path = require("path")
 var mysql = require('mysql')
 
@@ -28,6 +28,7 @@ var port = process.env.PORT || 8080
 app.use(bodyParser.urlencoded({
     extended: false
 }));
+app.use(favicon(path.join(__dirname, 'favicon.ico')))
 app.use(morgan('dev'))
 app.set('view engine', 'ejs') //templating engine
 app.set('views', 'views') //where are the templates?
@@ -106,7 +107,6 @@ app.delete('/sql-contact/:id/', (req,res,next)=>{
 })
 
 app.use(express.static(__dirname + '/'));
-
 app.listen(port, function () {
     console.log("Running contact app on port " + port)
 })
