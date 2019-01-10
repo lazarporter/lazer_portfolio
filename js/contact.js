@@ -1,14 +1,15 @@
-function deleteContact(id) {       
+function deleteContact(id) {
     $.ajax({
         type: "DELETE",
-        url: '/sql-contact/' + id,                
+        url: '/sql-contact/' + id,
         success: function (data) {
-            console.log("deleted" + id)
-            var idName='#'+id;
-            $(idName).remove();
+            var idName = '#' + id;
+            $(idName).fadeOut('slow', function () {
+                $(idName).remove();
+            });
         },
         error: function (data) {
             console.log('Error:', data);
         }
-    })    
+    })
 }
