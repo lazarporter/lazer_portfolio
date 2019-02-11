@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home | OCP</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+        crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="../css/PDFtoBootstrap.css">
+    <link rel="stylesheet" href="../css/jquery-ui.css">
+
+</head>
+
+<body>
+    <nav class="navbar navbar-dark navbar-expand-md px-5 py-4">
+        <div>
+            <img src="../assets/logo.png" alt="OCP_logo" class="d-none d-sm-inline">
+            <a class="navbar-brand" href="#">
+                Omni Consumer Products
+            </a>
+        </div>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#hideMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="hideMenu">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a href="#" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Products</a></li>
+            </ul>
+
+            <form class="form-inline my-2 my-lg-0" autocomplete="off">
+                <div>
+                    <input class="form-control" type="search" placeholder="Find a location..." id="navSearch">
+                    <!-- <input  onchange(someFunction) event.target.value or similar will be the input-->
+                    <!-- <div class="searchAheadWrapper">
+                        <div class="searchAheadList">
+                            <h3>Searchead Here</h3>
+                        </div>
+                    </div> -->
+                </div>
+            </form>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="carousel slide w-100" data-ride="carousel" id="homeCarousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#homeCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#homeCarousel" data-slide-to="1"></li>
+                    <li data-target="#homeCarousel" data-slide-to="2"></li>
+                </ol>
+
+                <div class="carousel-inner w-100">
+                    <div class="carousel-item active">
+                        <img src="../assets/slide1 resized.jpg" class="d-block w-100" alt="...">
+                        <div class="carousel-caption">
+                            <h2>Announcing Delta City</h2>
+                            <p>We're transforming Detroit into an efficient, clean, harmonious city.</p>
+                            <button type="button" class="btn btn-custom" onclick=" window.open('http://robocop.wikia.com/wiki/Omni_Consumer_Products','_blank')">LEARN
+                                MORE</button>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="../assets/slide2 resized.jpg" class="d-block w-100" alt="...">
+                        <div class="carousel-caption">
+                            <h2>Introducing our latest deforestation technology</h2>
+                            <button type="button" class="btn btn-custom" onclick=" window.open('http://robocop.wikia.com/wiki/Omni_Consumer_Products','_blank')">LEARN
+                                MORE</button>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="../assets/slide3 resized.jpg" class="d-block w-100" alt="...">
+                        <div class="carousel-caption">
+                            <h2>OCP starts new deep space mining program.</h2>
+                            <button type="button" class="btn btn-custom" onclick=" window.open('http://robocop.wikia.com/wiki/Omni_Consumer_Products','_blank')">LEARN
+                                MORE</button>
+                        </div>
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#homeCarousel" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#homeCarousel" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="row px-5 pt-5 justify-content-center">
+            <div class="col-md-3 customCard">
+                <h5 class="text-center customCardHead">Lowe Technologies</h5>
+                <hr class="mx-auto">
+                <p class="customCardBody">Lorem ipsum leverage agile frameworks to provide a robust synopsis for high
+                    level overviews. Iterative approaches to corporate strategy foster collaborartive thinking to
+                    further the overall value propostion. Organically grow the holistic world view of disruptive
+                    innovation via workplace diversity.</p>
+            </div>
+            <div class="col-md-3 customCard">
+                <h5 class="text-center customCardHead">Mediabreak</h5>
+                <hr class="mx-auto">
+                <p class="customCardBody">Lorem ipsum podcasting operational change management inside of worflows to
+                    establish a framework. Taking seamless key performance indicators offline to maximise the long
+                    tail. Keeping your eye on the ball while performing a deep dive on the start-up mentality to derive
+                    convergence.</p>
+            </div>
+            <div class="col-md-3 customCard">
+                <h5 class="text-center customCardHead">Security Concepts</h5>
+                <hr class="mx-auto">
+                <p class="customCardBody">Lorem ipsum capitalize on low hanging fruit to identify a ballpark vallue
+                    added activity to beta test. Override the digital divide with additional clickthroughs from DevOps.
+                    Nanotechnology immersion along the information highwigh will close the loop on focusing solely on
+                    the bottom line.</p>
+            </div>
+            <div class="col-md-3 customCard">
+                <h5 class="text-center customCardHead">Urban Rehabilitators</h5>
+                <hr class="mx-auto">
+                <p class="customCardBody">Lorem ipsum collaboratively administrate empowered markets via plug-and-play
+                    networks. Dynamically procrastinate B2C users after installed base benefits. Dramatically visualize
+                    customer directed convergence without revolutionary ROI.</p>
+            </div>
+        </div>
+        <div class="row pt-5 px-5">
+            <div class="col-md-12">
+                <hr>
+                <h2 class="text-center mt-5 mb-3">Doing good, one product at a time.</h2>
+            </div>
+        </div>
+
+        <div class="row px-5 mt-4 pb-4 justify-content-center">
+            <div class="col-sm-6 col-md-2 ">
+                <div class="nav flex-column nav-pills text-center " id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    <a class="nav-link active " id="v-pills-efficiency-tab" data-toggle="pill" href="#v-pills-efficiency"
+                        role="tab" aria-controls="v-pills-efficiency" aria-selected="true">Efficiency</a>
+                    <a class="nav-link" id="v-pills-sustainability-tab" data-toggle="pill" href="#v-pills-sustainability"
+                        role="tab" aria-controls="v-pills-sustainability" aria-selected="false">Sustainability</a>
+                    <a class="nav-link" id="v-pills-DoingGood-tab" data-toggle="pill" href="#v-pills-DoingGood" role="tab"
+                        aria-controls="v-pills-DoingGood" aria-selected="false">Doing Good</a>
+                </div>
+            </div>
+            <div class="col-sm-6 col-7-md tabuless">
+                <div class="tab-content" id="v-pills-tabContent">
+                    <div class="tab-pane fade show active" id="v-pills-efficiency" role="tabpanel" aria-labelledby="v-pills-efficiency-tab">
+                        <p>Efficiently unleash cross-media information without cross-media value. Quickly maximize
+                            timely deliverables for real-time schemas. Dramatically maintain clicks-and-mortar
+                            solutions without functional solutions.</p>
+                        <p>Completely synergize resource taxing relationships via premier niche markets. Professionally
+                            cultivate one-to-one customer service with robust ideas. Dynamically innovate
+                            resource-leviling customer service for stat of the art customer service.</p>
+                        <p>Collaboratively administrate empowered markets via plug-and-play networks. Dynamically
+                            procrastinate B2C users after installed base benefits. Dramatically visualize Customer
+                            directed convergence without revolutionary RIO.</p>
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-sustainability" role="tabpanel" aria-labelledby="v-pills-sustainability-tab">
+                        Lorem ipsum collaboratively administrate empowered markets via plug-and-play networks.
+                        Dynamically procrastinate B2C users after installed base benefits. Dramatically visualize
+                        customer directed convergence without revolutionary ROI.</div>
+                    <div class="tab-pane fade" id="v-pills-DoingGood" role="tabpanel" aria-labelledby="v-pills-DoingGood-tab">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua. Suspendisse faucibus interdum posuere lorem. Sed egestas
+                            egestas fringilla phasellus faucibus scelerisque eleifend. Nullam vehicula ipsum a arcu
+                            cursus vitae congue.</p>
+                        <p>Amet nisl purus in mollis nunc. Ac odio tempor orci dapibus ultrices. Vestibulum morbi
+                            blandit cursus risus at ultrices mi tempus. A lacus vestibulum sed arcu. Vitae aliquet nec
+                            ullamcorper sit amet risus nullam eget felis. Commodo elit at imperdiet dui accumsan sit
+                            amet nulla.</p>
+                        <p>Dui accumsan sit amet nulla facilisi morbi tempus. At auctor urna nunc id cursus metus. Et
+                            tortor consequat id porta nibh. Nibh cras pulvinar mattis nunc sed blandit libero. Blandit
+                            cursus risus at ultrices mi tempus imperdiet nulla.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div id="footer" class="row justify-content-center mt-4 p-3">
+            <div class="col-sm-3">
+
+                <ul class="list-unstyled">
+                    <li>
+                        <h6>Products</h6>
+                    </li>
+                    <li>Cyborgs</li>
+                    <li>Space ships</li>
+                    <li>Weapons</li>
+                    <li>Personal hygiene</li>
+                    <li>Lab-grown food</li>
+                </ul>
+            </div>
+            <div class="col-sm-3">
+
+                <ul class="list-unstyled">
+                    <li>
+                        <h6>Services</h6>
+                    </li>
+                    <li>Hospitals</li>
+                    <li>Police force</li>
+                    <li>Internet</li>
+                    <li>Private military</li>
+                </ul>
+            </div>
+            <div class="col-sm-3">
+
+                <ul class="list-unstyled">
+                    <li>
+                        <h6>Legal</h6>
+                    </li>
+                    <li>Terms of service</li>
+                    <li>Privacy policy</li>
+                    <li>Report a violation</li>
+                    <li>Contact us</li>
+                </ul>
+            </div>
+            <div class="col-sm-3 pt-5">
+                <p>Copyright 2041, OCP Inc.
+                    <br>
+                    All rights reserved.</p>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <h5 id="footer-tagline">OCP: The <span class="font-italic">only</span> choice for your consumer
+                        needs. &trade;</h>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+        crossorigin="anonymous"></script>
+    <script src="../js/jquery-ui.js"></script>
+    <script src="../js/searchAhead.js"></script>
+</body>
+
+</html>

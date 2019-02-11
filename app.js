@@ -50,6 +50,9 @@ app.get('/weather', (req, res, next) => {
 app.get('/wikipedia_viewer', (req, res, next) => {
     res.render('wikipedia_viewer')
 })
+app.get('/pdftobootstrap', (req,res,next) =>{
+    res.render('PDFtoBootstrap')
+})
 
 //GET route for the SQL based contact list
 app.get('/sql-contact', (req, res, next) => {
@@ -81,7 +84,7 @@ app.post('/sql-contact', (req, res, next) => {
         });
         
     });    
-})
+})  
 
 
 app.delete('/sql-contact/:id/', (req,res,next)=>{
