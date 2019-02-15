@@ -1,4 +1,27 @@
+var mysql = require('mysql')
+var contactList = [] //will hold the contacts that come back from each SQL Query
+
+exports.initializeContacts = () => {
+    //outsource the connection info to allow for keeping those details private (if config.js was .gitignored)
+    var connectParams = require('../config').connectionInfo
+    var connection = mysql.createConnection(connectParams);
+    //connect to the database
+    connection.connect();
+    //create the query string, table name is contactlist
+    var queryString = "SELECT * FROM contactlist;"
+    //Query the db to see get whatever is currently in there
+    connection.query({
+        sql: queryString,
+        timeout: 60000
+    }, function (error, results, fields) {
+        if (error) throw error;
+        contactList = results.slice()
+    });
+}
+
 exports.GETcontacts = (req, res, next) => {
+    // console.log("controller.getContacts")
+    // res.redirect('/')
     res.render('contact', {
         contacts: contactList,
         hasContacts: contactList.length > 0

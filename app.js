@@ -3,27 +3,9 @@ var favicon = require('serve-favicon')
 const bodyParser = require('body-parser');
 var morgan  = require('morgan')
 const path = require("path")
-var mysql = require('mysql')
 
 const routes = require('./routes/index')
-
-var contactList = [] //will hold the contacts that come back from each SQL Query
-
-//outsource the connection info to allow for keeping those details private (if config.js was .gitignored)
-var connectParams = require(path.join(__dirname, 'config.js')).connectionInfo
-var connection = mysql.createConnection(connectParams);
-//connect to the database
-connection.connect();
-
-
-//create the query string, table name is contactlist
-var queryString = "SELECT * FROM contactlist;"
-
-//Query the db to see get whatever is currently in there
-connection.query({sql: queryString, timeout:60000}, function (error, results, fields) {
-    if (error) throw error;
-    contactList = results.slice()
-});
+require('./controllers/contactController').initializeContacts()
 
 let app = express()
 var port = process.env.PORT || 8080
@@ -34,9 +16,6 @@ app.use(favicon(path.join(__dirname, 'favicon.ico')))
 app.use(morgan('dev'))
 app.set('view engine', 'ejs') //templating engine
 app.set('views', 'views') //where are the templates?
-
-
-//Routes:
 
 //home route
 app.get('/', (req, res, next) => {
