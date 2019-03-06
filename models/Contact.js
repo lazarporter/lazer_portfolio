@@ -10,7 +10,13 @@ module.exports = class Contact {
     }
 
     save () {
-    
+        if(!this.id){
+            return db.execute('INSERT INTO contactlist1 (first_name, last_name, phone) VALUES (\"' + this.first_name + '\",\"' + this.last_name + '\",\"' + this.phone + '\")')            
+        }
+
+        else{
+            //code for updating existing contacts
+        }
     }
 
     static deleteByID(id){
@@ -19,9 +25,5 @@ module.exports = class Contact {
 
     static fetchAll (){
         return db.execute('SELECT * FROM contactlist1')
-    }
-
-    static findByID(id){
-        return db.execute('SELECT * FROM contactlist1 WHERE id='+id)
     }
 }
