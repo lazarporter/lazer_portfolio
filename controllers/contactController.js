@@ -1,31 +1,37 @@
-var mysql = require('mysql')
+const db = require('../util/database')
+const Contact = require('../models/Contact')
+
 var contactList = [] //will hold the contacts that come back from each SQL Query
 
+
+
 exports.initializeContacts = () => {
-    //outsource the connection info to allow for keeping those details private (if config.js was .gitignored)
-    var connectParams = require('../config').connectionInfo
-    var connection = mysql.createConnection(connectParams);
-    //connect to the database
-    connection.connect();
-    //create the query string, table name is contactlist
-    var queryString = "SELECT * FROM contactlist;"
-    //Query the db to see get whatever is currently in there
-    connection.query({
-        sql: queryString,
-        timeout: 60000
-    }, function (error, results, fields) {
-        if (error) throw error;
-        contactList = results.slice()
-    });
+    Contact.fetchAll()
+    .then(([rows,metaData]) => {
+        console.log(rows[0].first_name)
+    })
+    .catch(err => console.log(err))
+    
+    // connection.query({
+    //     sql: queryString,
+    //     timeout: 60000
+    // }, function (error, results, fields) {
+    //     if (error) throw error;
+    //     contactList = results.slice()
+    // });
 }
 
 exports.GETcontacts = (req, res, next) => {
-    // console.log("controller.getContacts")
-    // res.redirect('/')
-    res.render('contact', {
-        contacts: contactList,
-        hasContacts: contactList.length > 0
+    Contact.fetchAll()
+    .then(([rows,metaData]) => {
+        console.log(rows[0].first_name)
+        res.render('contact', {
+            contacts: rows,
+            hasContacts: rows.length > 0
+        })
+
     })
+    .catch(err => console.log(err))
 }
 
 exports.POSTcontacts = (req, res, next) => {
@@ -53,4 +59,26 @@ exports.POSTcontacts = (req, res, next) => {
             res.status(200).redirect('/sql-contact');
         });
     });
+}
+
+exports.DELETEcontacts = (req,res,next)=>{
+    //build the query to delete the relevent contact from the table
+    queryString = "DELETE FROM contactlist WHERE phone = \"" + req.params.id + "\";"    
+    connection.connect();
+    //send the query
+    connection.query({sql: queryString, timeout:60000}, function (error, results, fields) {
+        if (error) throw error;
+        
+        //if succesfully deleted, send back and empty success response so the AJAX call can finish and remove() the row.
+        res.status(204).end()
+
+        //build a new query to get the updated list
+        queryString = "SELECT * FROM contactlist;"        
+        connection.query({sql: queryString, timeout:60000}, function (error, results, fields) {
+            if (error) throw error            
+            
+            //save the updated list in memory
+            contactList = results.slice()
+        });        
+    });    
 }

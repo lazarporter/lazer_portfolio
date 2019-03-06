@@ -26,44 +26,32 @@ app.get('/', (req, res, next) => {
 app.get('/weather', (req, res, next) => {
     res.render('weather')
 })
-
-//route for wikipedia search app
 app.use('/wikipedia_viewer', routes.wikiRoutes)
-// (req, res, next) => {
-//     res.render('wikipedia_viewer')
-// })
-app.get('/pdftobootstrap', (req,res,next) =>{
-    res.render('PDFtoBootstrap')
-})
-
-//GET route for the SQL based contact list
+app.get('/pdftobootstrap', routes.pdftobootstrap)
 app.use('/sql-contact', routes.contactRoutes)
 
 
-
-
-
-app.delete('/sql-contact/:id/', (req,res,next)=>{
-    //build the query to delete the relevent contact from the table
-    queryString = "DELETE FROM contactlist WHERE phone = \"" + req.params.id + "\";"    
+// app.delete('/sql-contact/:id/', (req,res,next)=>{
+//     //build the query to delete the relevent contact from the table
+//     queryString = "DELETE FROM contactlist WHERE phone = \"" + req.params.id + "\";"    
     
-    //send the query
-    connection.query({sql: queryString, timeout:60000}, function (error, results, fields) {
-        if (error) throw error;
+//     //send the query
+//     connection.query({sql: queryString, timeout:60000}, function (error, results, fields) {
+//         if (error) throw error;
         
-        //if succesfully deleted, send back and empty success response so the AJAX call can finish and remove() the row.
-        res.status(204).end()
+//         //if succesfully deleted, send back and empty success response so the AJAX call can finish and remove() the row.
+//         res.status(204).end()
 
-        //build a new query to get the updated list
-        queryString = "SELECT * FROM contactlist;"        
-        connection.query({sql: queryString, timeout:60000}, function (error, results, fields) {
-            if (error) throw error            
+//         //build a new query to get the updated list
+//         queryString = "SELECT * FROM contactlist;"        
+//         connection.query({sql: queryString, timeout:60000}, function (error, results, fields) {
+//             if (error) throw error            
             
-            //save the updated list in memory
-            contactList = results.slice()
-        });        
-    });    
-})
+//             //save the updated list in memory
+//             contactList = results.slice()
+//         });        
+//     });    
+// })
 
 app.use(express.static(__dirname + '/'));
 app.listen(port, function () {
