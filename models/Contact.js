@@ -10,11 +10,11 @@ module.exports = class Contact {
     }
 
     save () {
-
+    
     }
 
     static deleteByID(id){
-
+        return db.execute('DELETE FROM contactlist1 WHERE id='+id)
     }
 
     static fetchAll (){
@@ -22,6 +22,6 @@ module.exports = class Contact {
     }
 
     static findByID(id){
-
+        return db.execute('SELECT * FROM contactlist1 WHERE id='+id)
     }
 }

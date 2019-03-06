@@ -90,7 +90,7 @@
                     </thead>
                     <tbody>
                         <% for (let [index, person] of contacts.entries()) { %>
-                        <tr id="<%= person.phone %>">
+                        <tr id="<%= person.id %>">
                             <th scope="row">
                                 <%= index+1 %>
                             </th>
@@ -104,7 +104,7 @@
                                 <%= person.phone %>
                             </td>
                             <td>
-                                <button class="btn btn-danger" onclick="deleteContact(<%= person.phone %>)">
+                                <button class="btn btn-danger" onclick="deleteContact(<%= person.id %>)">
                                     <i class="fa fa-trash" aria-hidden="true" ></i>
                                 </button>
                             </td>
