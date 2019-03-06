@@ -4,6 +4,7 @@ function deleteContact(id) {
         url: '/sql-contact/' + id,
         success: function (data) {
             var idName = '#' + id;
+            console.log("Hello from AJAX!")
             $(idName).fadeOut('slow', function () {
                 $(idName).remove();
             });
