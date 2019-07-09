@@ -43,7 +43,7 @@
         </nav>
     </header>
 
-    <div class="container-flex">
+    <div class="container">
         <div class="row py-4">
             <div class="col">
                 <h1 class="display-4 text-center">Contact List</h1>
@@ -54,7 +54,47 @@
         </div>
 
         <div class="row">
-            <div class="offset-md-2"></div>
+            <table class="table table-borderless">
+                <form action="/sql-contact" method="POST">
+                    <thead>
+                        <tr>
+                            <th><input type="text" name="firstName" class="form-control" placeholder="First Name" required></th>
+                            <th><input type="text" name="lastName" class="form-control" placeholder="Last Name" required></th>
+                            <th><input type="number" name="phone" class="form-control" placeholder="Phone" required></th>
+                            <th><button type="submit" class="form-control btn btn-primary">Save</button></th>
+                        </tr>
+                    </thead>
+                </form>
+            </table>
+
+            <% if(hasContacts) { %>
+                <table class="table table-borderless">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Phone</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for (let [index, person] of contacts.entries()) { %>
+                            <tr>
+                                <td><%= person.firstName %></td>
+                                <td><%= person.lastName %></td>
+                                <td><%= person.phone %></td>
+                                <td>
+                                    <button class="btn btn-danger" onclick="deleteContact(<%= person.id %>)">
+                                            <i class="fa fa-trash" aria-hidden="true" ></i>
+                                    </button>   
+                                </td>
+                            </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            <% } %>
+
+            <!-- <div class="offset-md-2"></div>
             <div class="col-md-8">
                 <form action="/sql-contact" method="POST">
                     <div class="row">
@@ -72,10 +112,11 @@
                         </div>
                     </div>
                 </form>
-            </div>
-        </div><br>
+            </div> -->
+        </div> 
+        <!--  end row -->
 
-        <% if(hasContacts) { %>
+        <!-- <% if(hasContacts) { %>
         <div class="row">
             <div class="offset-md-2"></div>
             <div class="col-md-8">
@@ -114,7 +155,7 @@
                 </table>
             </div>
         </div>
-        <% } %>
+        <% } %> -->
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"

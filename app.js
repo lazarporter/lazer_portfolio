@@ -18,10 +18,10 @@ app.use(morgan('dev'))
 app.set('view engine', 'ejs') //templating engine
 app.set('views', 'views') //where are the templates?
 
+//establish routes
 app.get('/', (req, res, next) => {
     res.render('home')
 })
-
 app.get('/weather', (req, res, next) => {
     res.render('weather')
 })
