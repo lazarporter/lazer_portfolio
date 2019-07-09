@@ -1,11 +1,11 @@
 const Contact = require('../models/Contact')
 
 exports.GETcontacts = (req, res, next) => {
-    Contact.fetchAll()
-    .then(  ([rows,metaData]) => {
+    Contact.findAll().then( contacts => {
+        console.log(JSON.stringify(contacts));
         res.render('contact', {
-            contacts: rows,
-            hasContacts: rows.length > 0
+            contacts: contacts,
+            hasContacts: contacts.length > 0
         })
     })
     .catch( (err) =>{
@@ -15,14 +15,42 @@ exports.GETcontacts = (req, res, next) => {
 }
 
 exports.POSTcontacts = (req, res, next) => {
-    const tempContact = new Contact(null, req.body.first_name, req.body.last_name, req.body.phone)
-    tempContact.save()
-    .then( result => res.redirect('/sql-contact') )
-    .catch( err => console.log(err))
+    const first_name = req.body.firstName;
+    const last_name = req.body.lastName;
+    const phone = req.body.phone;
+    console.log("\nBody: \n" + JSON.stringify(req.body));
+    
+    //check for bad data and send back a fail code
+    if(!first_name || !last_name || !phone){
+        console.log(`Got Null data: \n1st: ${first_name}\nlast: ${last_name}\nphone:${phone}`)
+        return res.status(400);
+    }
+
+    //if all fields have some data:
+    Contact.create({
+        firstName: first_name,
+        lastName: last_name,
+        phone: phone
+    })
+    .then(result => {
+        //console.log("Contact saved! " + result);
+        res.redirect('/sql-contact')
+    })
+    .catch(err => {
+        console.log("Error saving contact: " + err)
+    });
 }
 
 exports.DELETEcontacts = (req,res,next)=>{
-    Contact.deleteByID(req.params.id)
-    .then (results => res.sendStatus(204))
-    .catch(err => console.log(err))
+    const contactID = req.params.id;
+    Contact.findByPk(contactID)
+    .then(contact =>{
+        return contact.destroy();
+    })
+    .then(result => {
+        res.sendStatus(204);
+    })
+    .catch(err =>{
+        console.log("Error deleting contact: " + console.err);        
+    })
 }

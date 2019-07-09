@@ -1,29 +1,57 @@
-const db = require('../util/database')
-const table = 'contactlist1'
+const db = require('../util/database').pool;
+const table = require('../util/database').table;
 
-module.exports = class Contact {
-    constructor(id, first_name, last_name, phone) {
-        this.id = id
-        this. first_name = first_name
-        this.last_name = last_name
-        this.phone = phone
+const Sequelize = require('Sequelize');
+const sequelize = require('../util/database');
+
+const Contact = sequelize.define('contact', {
+    id:{
+        type: Sequelize.INTEGER,
+        autoIncrement: true,
+        allowNull: false,
+        primaryKey: true
+    },
+    firstName: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    lastName: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    phone: {
+        type: Sequelize.STRING(10)
     }
+});
 
-    save () {
-        if(!this.id){
-            return db.execute('INSERT INTO contactlist1 (first_name, last_name, phone) VALUES (\"' + this.first_name + '\",\"' + this.last_name + '\",\"' + this.phone + '\")')            
-        }
+module.exports = Contact;
 
-        else{
-            //code for updating existing contacts
-        }
-    }
+// module.exports = class Contact {
+//     constructor(id, first_name, last_name, phone) {
+//         this.id = id
+//         this. first_name = first_name
+//         this.last_name = last_name
+//         this.phone = phone
+//     }
 
-    static deleteByID(id){
-        return db.execute('DELETE FROM contactlist1 WHERE id='+id)
-    }
+//     save () {
+//         if(!this.id){
+//             return db.execute('INSERT INTO ? (first_name, last_name, phone) VALUES (?, ?, ?)',
+//                 [table, this.first_name, this.last_name,  this.phone]
+//             )            
+//         }
 
-    static fetchAll (){
-        return db.execute('SELECT * FROM contactlist1')
-    }
-}
+//         else{
+//             //code for updating existing contacts
+//         }
+//     }
+
+//     static deleteByID(id){
+//         return db.execute('DELETE FROM ? WHERE id= ?',
+//             [table, id]);
+//     }
+
+//     static fetchAll (){
+//         return db.execute('SELECT * FROM ?', [table]);
+//     }
+// }

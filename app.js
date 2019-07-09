@@ -3,6 +3,7 @@ var favicon = require('serve-favicon')
 const bodyParser = require('body-parser');
 var morgan  = require('morgan')
 const path = require("path")
+const sequelize = require('./util/database');
 
 const routes = require('./routes/index')
 // require('./controllers/contactController').initializeContacts()
@@ -29,6 +30,12 @@ app.get('/pdftobootstrap', routes.pdftobootstrap)
 app.use('/sql-contact', routes.contactRoutes)
 app.use(express.static(__dirname + '/'));
 
-app.listen(port, function () {
-    console.log("Running contact app on port " + port)
+sequelize.sync().then(result =>{
+    app.listen(port, function () {
+        console.log("Running contact app on port " + port)
+    })
 })
+.catch(err =>{
+    console.log("Error syncing SQL: " + err);
+});
+
