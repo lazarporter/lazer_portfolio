@@ -46,12 +46,10 @@
     <div class="container">
         <div class="row py-4">
             <div class="col">
-                <h1 class="display-4 text-center">Contact List</h1>
-                <br><br>
-                <p class="lead text-center">The below contact list is connected to a MySQL database. Adding a contact
-                    will update the database and the updated table will populate on this page.</p>
+                <h1 class="display-4 text-center">Contact List - SQL</h1>
+                <p class="lead text-center">Let me know you dropped by! Add yourself to my contacts list below.</p>
             </div>
-        </div>
+        </div> <!-- End row py-4 -->
 
         <div class="row">
             <table class="table table-borderless">
@@ -93,70 +91,8 @@
                     </tbody>
                 </table>
             <% } %>
-
-            <!-- <div class="offset-md-2"></div>
-            <div class="col-md-8">
-                <form action="/sql-contact" method="POST">
-                    <div class="row">
-                        <div class="col-lg">
-                            <input type="text" name="firstName" class="form-control mb-3 mx-3" placeholder="First Name" required>
-                        </div>
-                        <div class="col-lg">
-                            <input type="text" name="lastName" class="form-control mb-3 mx-3" placeholder="Last Name" required>
-                        </div>
-                        <div class="col-lg">
-                            <input type="number" name="phone" class="form-control mb-3 mx-3" placeholder="Phone" required> 
-                        </div>
-                        <div class="col-lg">
-                            <button type="submit" class="btn btn-primary mb-3 mx-3">Save</button>
-                        </div>
-                    </div>
-                </form>
-            </div> -->
-        </div> 
-        <!--  end row -->
-
-        <!-- <% if(hasContacts) { %>
-        <div class="row">
-            <div class="offset-md-2"></div>
-            <div class="col-md-8">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">First</th>
-                            <th scope="col">Last</th>
-                            <th scope="col">Phone</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <% for (let [index, person] of contacts.entries()) { %>
-                        <tr id="<%= person.id %>">
-                            <th scope="row">
-                                <%= index+1 %>
-                            </th>
-                            <td>
-                                <%= person.firstName %>
-                            </td>
-                            <td>
-                                <%= person.lastName %>
-                            </td>
-                            <td>
-                                <%= person.phone %>
-                            </td>
-                            <td>
-                                <button class="btn btn-danger" onclick="deleteContact(<%= person.id %>)">
-                                    <i class="fa fa-trash" aria-hidden="true" ></i>
-                                </button>
-                            </td>
-                        </tr>
-                        <% } %>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <% } %> -->
-    </div>
+        </div>    <!-- end row -->
+    </div> <!-- end container-->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
         crossorigin="anonymous"></script>
