@@ -2,10 +2,9 @@ const Contact = require('../models/Contact')
 
 exports.GETcontacts = (req, res, next) => {
     Contact.findAll().then( contacts => {
-        console.log(JSON.stringify(contacts));
         res.render('contact', {
             contacts: contacts,
-            hasContacts: contacts.length > 0
+            hasContacts: contacts.length > 0    //The view uses this to decide how much table to show
         })
     })
     .catch( (err) =>{
@@ -18,9 +17,8 @@ exports.POSTcontacts = (req, res, next) => {
     const first_name = req.body.firstName;
     const last_name = req.body.lastName;
     const phone = req.body.phone;
-    console.log("\nBody: \n" + JSON.stringify(req.body));
     
-    //check for bad data and send back a fail code
+    //check for bad data and send back a fail code if anything is missing
     if(!first_name || !last_name || !phone){
         console.log(`Got Null data: \n1st: ${first_name}\nlast: ${last_name}\nphone:${phone}`)
         return res.status(400);

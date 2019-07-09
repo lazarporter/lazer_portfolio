@@ -25,33 +25,3 @@ const Contact = sequelize.define('contact', {
 });
 
 module.exports = Contact;
-
-// module.exports = class Contact {
-//     constructor(id, first_name, last_name, phone) {
-//         this.id = id
-//         this. first_name = first_name
-//         this.last_name = last_name
-//         this.phone = phone
-//     }
-
-//     save () {
-//         if(!this.id){
-//             return db.execute('INSERT INTO ? (first_name, last_name, phone) VALUES (?, ?, ?)',
-//                 [table, this.first_name, this.last_name,  this.phone]
-//             )            
-//         }
-
-//         else{
-//             //code for updating existing contacts
-//         }
-//     }
-
-//     static deleteByID(id){
-//         return db.execute('DELETE FROM ? WHERE id= ?',
-//             [table, id]);
-//     }
-
-//     static fetchAll (){
-//         return db.execute('SELECT * FROM ?', [table]);
-//     }
-// }
