@@ -54,7 +54,7 @@
         <div class="row">
             <table class="table table-borderless">
                 <form action="/sql-contact" method="POST">
-                    <thead>
+                    <thead class="thead-light">
                         <tr>
                             <th><input type="text" name="firstName" class="form-control" placeholder="First Name" required></th>
                             <th><input type="text" name="lastName" class="form-control" placeholder="Last Name" required></th>
@@ -67,7 +67,7 @@
 
             <% if(hasContacts) { %>
                 <table class="table table-borderless">
-                    <thead class="thead-light">
+                    <thead class="">
                         <tr>
                             <th>First Name</th>
                             <th>Last Name</th>
