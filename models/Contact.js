@@ -1,8 +1,9 @@
 const db = require('../util/database').pool;
 const table = require('../util/database').table;
 
-const Sequelize = require('Sequelize');
+const Sequelize = require('sequelize');
 const sequelize = require('../util/database');
+
 
 const Contact = sequelize.define('contact', {
     id:{
