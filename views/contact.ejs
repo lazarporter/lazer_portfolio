@@ -77,7 +77,7 @@
                     </thead>
                     <tbody>
                         <% for (let [index, person] of contacts.entries()) { %>
-                            <tr>
+                            <tr id=<%=person.id%> >
                                 <td><%= person.firstName %></td>
                                 <td><%= person.lastName %></td>
                                 <td><%= person.phone %></td>
