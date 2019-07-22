@@ -46,7 +46,7 @@ exports.DELETEcontacts = (req,res,next)=>{
         return contact.destroy();
     })
     .then(result => {
-        res.sendStatus(204);
+        return res.sendStatus(204);
     })
     .catch(err =>{
         console.log("Error deleting contact: " + console.err);        
