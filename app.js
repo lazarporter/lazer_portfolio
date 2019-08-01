@@ -1,15 +1,17 @@
 const express = require('express')
-var favicon = require('serve-favicon')
+const favicon = require('serve-favicon')
 const bodyParser = require('body-parser');
-var morgan  = require('morgan')
+const morgan  = require('morgan')
 const path = require("path")
 const sequelize = require('./util/database');
+let testDB = process.env.DB_URI || 'failed'
+console.log(`DB URI: ${DB_URI}`)
 
 const routes = require('./routes/index')
 // require('./controllers/contactController').initializeContacts()
 
 let app = express()
-var port = process.env.PORT || 8080
+let port = process.env.PORT || 8080
 app.use(bodyParser.urlencoded({
     extended: false
 }));
