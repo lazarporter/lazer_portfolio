@@ -9,9 +9,6 @@ let testDB = process.env.DB_URI || 'failed'
 
 const routes = require('./routes/index');
 
-let app = express();
-var port = process.env.PORT || 8080;
-
 let app = express()
 let port = process.env.PORT || 8080
 app.use(bodyParser.urlencoded({
