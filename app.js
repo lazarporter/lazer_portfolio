@@ -1,15 +1,19 @@
-const express = require('express');
-var favicon = require('serve-favicon');
+const express = require('express')
+const favicon = require('serve-favicon')
 const bodyParser = require('body-parser');
-var morgan  = require('morgan');
-const path = require("path");
+const morgan  = require('morgan')
+const path = require("path")
 const sequelize = require('./util/database');
+let testDB = process.env.DB_URI || 'failed'
+
 
 const routes = require('./routes/index');
 
 let app = express();
 var port = process.env.PORT || 8080;
 
+let app = express()
+let port = process.env.PORT || 8080
 app.use(bodyParser.urlencoded({
     extended: false
 }));
