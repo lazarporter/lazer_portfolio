@@ -5,7 +5,7 @@ const morgan  = require('morgan')
 const path = require("path")
 const sequelize = require('./util/database');
 let testDB = process.env.DB_URI || 'failed'
-console.log(`DB URI: ${DB_URI}`)
+
 
 const routes = require('./routes/index')
 // require('./controllers/contactController').initializeContacts()
