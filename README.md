@@ -1,4 +1,4 @@
-# lazer-portfolio
+# lazer_portfolio
 
 ## Project setup
 ```

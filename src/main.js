@@ -1,20 +1,10 @@
-import '@babel/polyfill'
-import 'mutationobserver-shim'
-import Vue from 'vue';
-import './plugins/bootstrap-vue'
-import App from './App.vue';
-import VueRouter from 'vue-router';
-import { routes } from './routes';
+import Vue from 'vue'
+import App from './App.vue'
+import vuetify from './plugins/vuetify';
 
-Vue.config.productionTip = false;
-Vue.use(VueRouter);
-
-const router = new VueRouter({
-  routes,
-  mode: 'history',
-});
+Vue.config.productionTip = false
 
 new Vue({
-  router,
-  render: h => h(App),
-}).$mount('#app');
+  vuetify,
+  render: h => h(App)
+}).$mount('#app')
